@@ -3,7 +3,6 @@ package notadomain.aeras.Base64POC.repository;
 import notadomain.aeras.Base64POC.database.ImageDatabase;
 import notadomain.aeras.Base64POC.model.Image;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import java.io.InputStream;
 import java.time.LocalDateTime;
@@ -29,7 +28,7 @@ public class RealRepository implements ImageRepository{
     }
     public byte[] getImageData(String imageID, int chunkNumber){
         Optional<String> pathOptional = getPathOfImageId(imageID);
-        String path = null;
+        String path;
         if(pathOptional.isPresent()) {
             path = pathOptional.get();
             System.out.println("Path found is: " + path);
@@ -37,11 +36,14 @@ public class RealRepository implements ImageRepository{
             byte[] imageData = new byte[(int) CHUNK_SIZE];
             try (InputStream is = this.getClass().getResourceAsStream(path)) {
                 long position = chunkNumber * CHUNK_SIZE;
-                is.skip(position);
-                imageData = is.readNBytes(imageData.length);
+                if(is!=null) {
+                    long bytesSKipped = is.skip(position);
+                    System.out.println("Skipped " + bytesSKipped + " bytes");
+                    imageData = is.readNBytes(imageData.length);
+                }
                 return imageData;
             } catch (Exception e) {
-                System.out.println(e.toString());
+                System.out.println(e.getLocalizedMessage());
             }
         }
         return null;

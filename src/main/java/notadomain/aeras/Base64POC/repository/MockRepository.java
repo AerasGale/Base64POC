@@ -56,7 +56,7 @@ public class MockRepository implements ImageRepository{
             }
             return imageData;
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.getLocalizedMessage());
         }
         return null;
     }
