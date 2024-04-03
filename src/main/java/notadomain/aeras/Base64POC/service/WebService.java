@@ -4,6 +4,7 @@ import notadomain.aeras.Base64POC.dto.ImageDataRequest;
 import notadomain.aeras.Base64POC.dto.ImagePostBody;
 import notadomain.aeras.Base64POC.model.Image;
 import notadomain.aeras.Base64POC.repository.ImageRepository;
+import notadomain.aeras.Base64POC.repository.RealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,7 @@ public class WebService {
         if(imageBytes == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        boolean lastChunk = imageBytes.length < ImageRepository.CHUNK_SIZE;
+        boolean lastChunk = imageBytes.length < RealRepository.CHUNK_SIZE;
         String imageData = Base64.getEncoder().encodeToString(imageBytes);
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-Last-Chunk", Boolean.toString(lastChunk));
@@ -41,7 +42,7 @@ public class WebService {
         if(imageBytes==null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        boolean lastChunk = imageBytes.length < ImageRepository.CHUNK_SIZE;
+        boolean lastChunk = imageBytes.length < RealRepository.CHUNK_SIZE;
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/octet-stream");
         headers.add("X-Last-Chunk", Boolean.toString(lastChunk));

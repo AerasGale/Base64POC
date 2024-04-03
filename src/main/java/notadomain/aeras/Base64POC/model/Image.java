@@ -15,6 +15,14 @@ public class Image {
     private LocalDateTime startDate;
     @Column(columnDefinition = "DATETIME")
     private LocalDateTime endDate;
+    public Image(){}
+    public Image(Integer id, String name, String path, LocalDateTime startDate, LocalDateTime endDate){
+        this.id = id;
+        this.name = name;
+        this.path = path;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 
     public Integer getId() {
         return id;
