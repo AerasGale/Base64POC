@@ -18,23 +18,23 @@ public class MockRepository implements ImageRepository{
 
     private void populateMockData() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        mockData.add(new Image(0, "default.png", "/static/images/", null, null));
-        mockData.add(new Image(1, "default.png", "/static/images/"
+        mockData.add(new Image(0, "default.png", "/static/images", null, null));
+        mockData.add(new Image(1, "img1.png", "/static/images"
                 , LocalDateTime.parse("2024/04/03 12:29:34", formatter)
                 , LocalDateTime.parse("2024/04/03 15:29:34", formatter)));
-        mockData.add(new Image(2, "default.png", "/static/images/"
+        mockData.add(new Image(2, "img2.png", "/static/images"
                 , LocalDateTime.parse("2024/04/03 16:09:34", formatter)
                 , LocalDateTime.parse("2024/04/03 17:29:34", formatter)));
-        mockData.add(new Image(3, "default.png", "/static/images/"
+        mockData.add(new Image(3, "img3.png", "/static/images"
                 , LocalDateTime.parse("2024/04/03 18:29:34", formatter)
                 , LocalDateTime.parse("2024/04/03 19:29:34", formatter)));
-        mockData.add(new Image(4, "default.png", "/static/images/"
+        mockData.add(new Image(4, "img4.png", "/static/images"
                 , LocalDateTime.parse("2024/04/04 08:29:34", formatter)
                 , LocalDateTime.parse("2024/04/03 09:29:34", formatter)));
-        mockData.add(new Image(5, "default.png", "/static/images/"
+        mockData.add(new Image(5, "img5.png", "/static/images"
                 , LocalDateTime.parse("2024/04/03 10:29:34", formatter)
                 , LocalDateTime.parse("2024/04/03 11:29:34", formatter)));
-        mockData.add(new Image(6, "default.png", "/static/images/"
+        mockData.add(new Image(6, "img6.png", "/static/images"
                 , LocalDateTime.parse("2024/04/03 12:29:34", formatter)
                 , LocalDateTime.parse("2024/04/03 13:29:34", formatter)));
     }
